@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+    <title>Cha cha cha</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Обновить данные пользователя</h2>
+    <form action="#" th:action="@{/updateUser}" th:object="${updateUser}" method="post">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}">
+            <label for="name">Имя</label>
+            <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="Имя">
+            <small class="form-text text-muted" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Фамилия</label>
+            <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="Фамилия">
+            <small class="form-text text-muted" th:if="${#fields.hasErrors('lastName')}"
+                   th:errors="*{lastName}"></small>
+        </div>
+        <div class="form-group">
+            <label for="age">Возраст</label>
+            <input type="number" class="form-control" th:field="*{age}" id="age" placeholder="Возраст">
+            <small class="form-text text-muted" th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="Email">
+            <small class="form-text text-muted" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+        </div>
+        <button type="submit" class="btn btn-primary">Обновить</button>
+    </form>
+</div>
+<!-- Подключение jQuery и Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

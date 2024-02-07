@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+    <title>Make user great again</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Добавить пользователя</h2>
+    <form th:action="@{/addUser}" th:object="${newUser}" method="post">
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Напишите имя">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Фамилия</label>
+            <input type="text" th:field="*{lastName}" class="form-control" id="lastName" placeholder="Напишите фамилию">
+        </div>
+        <div class="form-group">
+            <label for="age">Возраст</label>
+            <input type="number" th:field="*{age}" class="form-control" id="age" placeholder="0">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="Напишите email">
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
+    </form>
+</div>
+<!-- Подключение jQuery и Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

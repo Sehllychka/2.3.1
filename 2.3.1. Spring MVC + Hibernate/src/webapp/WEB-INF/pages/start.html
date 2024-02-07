@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+
+    <title>Users never die</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Пользователи:</h1>
+<table class="table table-bordered">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Возраст</th>
+        <th scope="col">Эл. почта</th>
+        <th scope="col">Действие</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${user.age}"></td>
+        <td th:text="${user.email}"></td>
+        <td>
+            <a th:href="@{/showUpdateUserForm/(id=${user.getId()})}">
+                <button type="submit" class="btn btn-primary">Обновить</button>
+            </a>
+            <form th:action="@{/deleteUser/(id=${user.getId()})}" method="post">
+                <button type="submit" class="btn btn-danger">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<form action="showNewUserForm">
+    <input type="submit" value="Добавить" class="btn btn-success">
+</form>
+</body>
+</html>
